@@ -4,7 +4,7 @@ import Header from "@/components/home/header";
 import Footer from "@/components/footer";
 import Introduction from "@/components/home/introduction";
 import History from "@/components/home/history";
-
+import Hero from "@/components/home/hero";
 import Domain from "@/components/home/domain-cards";
 import { motion } from "framer-motion";
 
@@ -74,6 +74,7 @@ const Home: React.FC = () => {
                         <Domain/>
                     </div>
                 </section>
+                <Hero/>
             </main>
             <Footer/>
         </div>
