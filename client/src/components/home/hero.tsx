@@ -6,7 +6,7 @@ import Hero from './s_k.png';
 const SkillsImage: React.FC = () => {
     return (
         <motion.section
-            className="flex flex-col justify-center items-center py-8 sm:py-12 md:py-16 lg:py-24 space-y-10 w-full overflow-hidden" // Added w-full and overflow-hidden
+            className="flex flex-col justify-center items-center py-8 sm:py-12 md:py-16 lg:py-24 space-y-10 w-full overflow-hidden"
             initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
             animate={{
                 opacity: 1,
