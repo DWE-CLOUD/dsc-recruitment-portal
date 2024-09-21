@@ -1,5 +1,7 @@
+import { sendConfirmation } from "../../shared/utils/confirm";
 import { getTechnicalCollection } from "../../loaders/collections";
 import ERRORS from "../../shared/errors";
+import { updateSheet } from "../../shared/utils/sheets";
 
 export const registerTechnical = async (
   firstName: string,
@@ -33,5 +35,24 @@ export const registerTechnical = async (
     github,
     subDomain,
   });
+  sendConfirmation({
+    firstName,
+    lastName,
+    email: srmEmail,
+    domain: 'technical',
+  })
+  await updateSheet('Technical', {
+    id: data.insertedId,
+    subDomain,
+    firstName,
+    lastName,
+    year,
+    registrationNumber,
+    department,
+    srmEmail,
+    personalEmail,
+    phoneNumber,
+    github,
+  })
   return data;
 };
