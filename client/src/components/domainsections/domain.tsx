@@ -1,4 +1,3 @@
-// domain.tsx
 "use client";
 import Header from "@/components/home/header";
 import Footer from "../footer";
@@ -12,7 +11,7 @@ type DomainProps = {
     sections: { heading: string; content: string }[];
 };
 
-export default function Domain({ imgSrc, altText, sections }: DomainProps) {
+export default function Domain({ imgSrc, sections }: DomainProps) {
     const [hasAnimated, setHasAnimated] = useState(false);
 
     const iconVariants = {
@@ -29,7 +28,7 @@ export default function Domain({ imgSrc, altText, sections }: DomainProps) {
                 duration: 1,
                 ease: "easeInOut",
                 repeat: Infinity,
-                repeatType: "mirror",
+                repeatType: "mirror" as "mirror", //eslint-disable-line @typescript-eslint/prefer-as-const
             },
         },
     };

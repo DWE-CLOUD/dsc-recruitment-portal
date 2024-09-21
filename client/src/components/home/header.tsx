@@ -4,7 +4,15 @@ import Image from 'next/image';
 import Logo from './colour.svg';
 import { motion } from 'framer-motion';
 import Lightbox from '@/components/domains/lightbox';
-import { Domain } from './domain-cards';
+//import DomainsComponent from './domain-cards';
+interface Domain {
+    title: string;
+    description: string;
+    image: string;
+    gradient: string;
+    subdomains: string[];
+}
+
 
 const domains: Domain[] = [
     {
