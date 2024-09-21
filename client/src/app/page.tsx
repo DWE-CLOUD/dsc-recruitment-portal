@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
-import Header from "@/components/home/header";
-import Footer from "@/components/footer";
-import Introduction from "@/components/home/introduction";
-import History from "@/components/home/history";
-import Hero from "@/components/home/hero";
-import Domain from "@/components/home/domain-cards";
-import { motion } from "framer-motion";
+import React, { useEffect } from 'react';
+import Footer from '@/components/footer';
+import Introduction from '@/components/home/introduction';
+import History from '@/components/home/history';
+import Hero from '@/components/home/hero';
+import Domain from '@/components/home/domain-cards';
+import { motion } from 'framer-motion';
+import Header from '@/components/home/header';
 
 const Home: React.FC = () => {
     useEffect(() => {
@@ -14,7 +14,6 @@ const Home: React.FC = () => {
         const ctx = canvas.getContext('2d');
 
         if (!ctx) {
-            console.error('2D context not supported or canvas initialization failed.');
             return;
         }
 
@@ -22,7 +21,7 @@ const Home: React.FC = () => {
         canvas.height = 20;
         ctx.font = '12px Arial';
 
-        const text = "Data Science Community Recruitments";
+        const text = 'Data Science Community Recruitments';
         let textX = canvas.width;
 
         const animate = () => {
@@ -48,35 +47,28 @@ const Home: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#1E0D2D] to-[#0D0513] text-white font-sans">
-            <title>
-                Data Science Community Recruitments
-            </title>
+            <title>Data Science Community Recruitments</title>
             <Header />
             <main className="container mx-auto px-4 py-8 flex flex-col">
                 <motion.h1
                     initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{
-                        duration: 1,
-                        delay: 0.5,
-                        type: "spring",
-                        stiffness: 100,
-                    }}
+                    transition={{ duration: 1, delay: 0.5, type: 'spring', stiffness: 100 }}
                     className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-8 text-center"
                 >
                 </motion.h1>
-                <section id="home" className="flex-grow">
+                <section id="home">
                     <Introduction />
                 </section>
                 <History />
                 <section id="domain">
                     <div className="mt-36">
-                        <Domain/>
+                        <Domain />
                     </div>
                 </section>
-                <Hero/>
+                <Hero />
             </main>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

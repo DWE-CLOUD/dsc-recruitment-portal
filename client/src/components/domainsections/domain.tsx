@@ -1,3 +1,4 @@
+// domain.tsx
 "use client";
 import Header from "@/components/home/header";
 import Footer from "../footer";
@@ -14,28 +15,56 @@ type DomainProps = {
 export default function Domain({ imgSrc, altText, sections }: DomainProps) {
     const [hasAnimated, setHasAnimated] = useState(false);
 
-    return (
-        <div className="min-h-screen bg-[#11071F]  relative">
-            <Header />
-            <div className="p-6 flex flex-col gap-10 xl:gap-16 relative z-20">
-                <motion.div
-                    className="absolute z-10 w-60 lg:w-96"
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <Image
-                        src={imgSrc}
-                        alt={altText}
-                        width={500}
-                        height={500}
-                    />
-                </motion.div>
+    const iconVariants = {
+        initial: { opacity: 0, x: -50, y: -50, rotate: 0 },
+        animate: {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            rotate: [0, 10, -10, 0],
+            transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 10,
+                duration: 1,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+            },
+        },
+    };
 
+    return (
+        <div className="min-h-screen bg-[#11071F] relative">
+            <motion.div
+                initial="initial"
+                animate="animate"
+                variants={iconVariants}
+                className="absolute top-4 left-4"
+            >
+                <Image
+                    src="/path/to/your/icon.svg"
+                    alt="Icon"
+                    width={50}
+                    height={50}
+                    className="h-12 w-12"
+                />
+            </motion.div>
+
+            <Header />
+            <div
+                className="p-6 flex flex-col gap-10 xl:gap-16 relative pt-24"
+                style={{
+                    backgroundImage: `url(${imgSrc})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "left center",
+                    backgroundSize: "20% auto",
+                }}
+            >
                 {sections.map((section, index) => (
                     <motion.div
                         key={index}
-                        className="z-50 flex flex-col items-center justify-center text-center mt-24"
+                        className="flex flex-col items-center justify-center text-center"
                         initial={{ opacity: 0, y: 50 }}
                         animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                         onViewportEnter={() => {
@@ -60,7 +89,6 @@ export default function Domain({ imgSrc, altText, sections }: DomainProps) {
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.5, delay: lineIndex * 0.1 }}
                                 >
-                                
                                     {line}
                                     <br />
                                 </motion.div>
@@ -69,7 +97,7 @@ export default function Domain({ imgSrc, altText, sections }: DomainProps) {
                     </motion.div>
                 ))}
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }
