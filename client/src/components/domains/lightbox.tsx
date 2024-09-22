@@ -132,6 +132,7 @@ const Lightbox: React.FC<LightboxProps> = ({
                                 style={{minHeight: "50vh"}}
                             >
                                 <Form
+                                    includeGithub={true}
                                     domain={domain.title}
                                     subdomains={domain.subdomains}
                                     description={domain.description}
